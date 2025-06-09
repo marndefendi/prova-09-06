@@ -1,0 +1,108 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    char banda[50];
+    char ano[50];
+    char genero[50];
+    int concluida;
+    int opc;
+   
+} CD;
+
+CD cd[30];
+int numCD = 0;
+
+void cadastrarCD();
+void listarCD();
+void pesquisarCD();
+void carrinho();
+void finalizaFuncao();
+
+
+int main() {
+	int opc, valor;
+	do {
+	printf("Bem vindo a loja SOM & ARTE!\n");
+	printf("1 - Cadastrar CD\n");
+	printf("2 - Listar CD's'\n");
+	printf("3 - Pesquisar CD\n");
+	printf("0 - Ver carrinho\n");
+	scanf("%d", &opc);
+	getchar(); 
+	switch (opc) {
+	
+            case 1:
+                cadastrarCD();
+                break;
+                
+            case 2:
+                listarCD();
+                break;
+                
+            case 3:
+            	pesquisarCD();
+            	break;
+            	
+            case 4:
+            	carrinho();
+            	break;
+        
+               default:
+                system ("cls");
+                printf("o total do carrinho sera de: %d \n", valor);
+                break;
+        }
+    } while (opc != 0);
+    
+    return 0;
+}
+
+void finalizarFuncao(){
+    printf("Enter para continuar...");
+    getchar();   
+    getchar();
+    system("cls");
+}
+
+void cadastrarCD() {
+	system("cls");
+	printf("Banda:  ");
+	scanf(" %[^\n]", cd [numCD].banda);
+	printf("Ano de lancamento :  ");
+	scanf(" %[^\n]", cd [numCD].ano);
+	printf("Genero:   \n");
+	printf("1 - rock\n");
+	printf("2 - mpb\n");
+	printf("3 - rock BR\n");
+	scanf(" %[^\n]", &cd [numCD].genero);
+}
+ 
+
+void listarCD(){
+    system("cls");
+    printf("----CD's cadastrados----\n");
+    for (int i = 0; i < numCD; i++) {
+    printf("Banda : %s\n", cd[i].banda);
+	printf("Ano: %s\n", cd[i].ano);
+	printf("Genero: %s\n", cd[i].genero);
+    }
+    finalizarFuncao();
+
+} 
+
+void pesquisarCD(){
+	int genero, opc, opcmenu;
+	system("cls");
+	printf("Qual o genero do cd que voce deseja filtrar?\n");
+	printf("1 - rock\n");
+	printf("2 - mpb\n");
+	printf("3 - rock BR\n");
+	scanf("%d", &opc);
+	
+}
+
+void carrinho(){
+	int valor;
+	printf("o total do carrinho sera de: %d \n", valor);
+}
