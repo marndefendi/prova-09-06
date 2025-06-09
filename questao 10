@@ -1,0 +1,109 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    char nome[30];
+    char valor[30]; 
+    int concluida;
+} Produto;
+
+Produto produtos[30];
+int numProduto = 0;
+
+void criarProduto();
+void listarProduto();
+void marcarProduto();
+void finalizaFuncao();
+
+int main() {
+	int opcao;
+    
+    do {
+    	printf("Bem vindo ao SuperMais!");
+        printf("Digite o que deseja fazer.\n");
+        printf("1 - Cadastrar produto\n");
+        printf("2 - Informacoes sobre o produto\n");
+        printf("3 - Comprar produto\n");
+        printf("0 - Sair\n");
+        scanf("%d", &opcao);
+        getchar(); 
+        
+        switch (opcao){
+            case 1:
+                criarProduto();
+                break;
+                
+            case 2:
+                listarProduto();
+                break;
+                
+            case 3:
+                marcarProduto();
+                break;
+                
+            default:
+                system ("cls");
+                printf("Opção invalida!, tente novamente\n");
+                break;
+        }
+    } while (opcao != 0);
+
+    return 0;
+}
+
+void finalizarFuncao(){
+    printf("Enter para continuar...");
+    getchar();   
+    getchar();
+    system("cls");
+}
+
+void criarProduto() {
+    system("cls");
+    printf("---- Casdastro ----\n");
+    printf("Nome do produto: ");
+    scanf(" %[^\n]", produtos[numProduto].nome);
+    printf("Valor do produto: ");
+    scanf(" %[^\n]", produtos[numProduto].valor);
+	produtos[numProduto].concluida = 0;
+    numProduto++;
+    
+   finalizarFuncao();
+}
+
+void listarProduto() {
+    system("cls");
+    printf("----Produtos----\n");
+    for (int i = 0; i < numProduto; i++) {
+        printf("Produto %d\n", i + 1);
+        printf("Nome: %s\n", produtos[i].nome);
+        printf("Valor: %s\n", produtos[i].valor);
+    
+        if (produtos[i].concluida == 1){
+            printf("Status: Comprado\n");
+        } 
+        
+        else{
+            printf("Status: Comprar\n");
+        }
+        printf("-----------------\n");
+    }
+    finalizarFuncao();
+}
+
+void marcarProduto() {
+    int concluida, compra;
+    system("cls");
+    printf("Informe o numero do produto que deseja comprar: ");
+    scanf("%d", &concluida);
+    printf("Informe a quantidade que deseja comprar: ");
+    scanf("%d", &compra);
+    if (concluida < 1 || concluida > numProduto){
+        printf("Numero invalido!\n");
+        system ("clear");
+        return;
+    }
+    produtos[concluida - 1].concluida = 1;
+    printf("Compra finalizada! :)\n");
+    finalizarFuncao();
+}
