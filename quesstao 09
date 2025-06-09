@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+struct aluno {
+	char nome[50];
+	int idade;
+	float nota;
+	
+}Aluno;
+
+aluno aluno [30];
+int numAlunos = 0;
+
+void listarAlunos();
+
+
+int main(){
+	int i;
+for(int i = 0; i < 3; i++){
+	printf("Digite os dados do aluno %d: \n", i + 1);
+	printf("Nome:");
+	scanf("%s", aluno[i].nome);
+	printf("Idade:  ");
+	scanf("%d", &aluno[i].idade);
+	printf("Nota:  ");
+	scanf("%f", &aluno[i].nota);
+}
+return 0;
+
+}
+void ListarAluno(){
+	int i;
+for (int i = 0; i < 3; i++){
+	printf("Aluno %d:  \n", i + 1);
+	printf("Nome: %s\n", aluno[i].nome);
+	printf("Idade: %d \n", aluno[i].idade);
+	printf("Nota: %.2f", aluno[i].nota);
+}
+
+}
